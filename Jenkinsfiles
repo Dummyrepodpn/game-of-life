@@ -11,6 +11,6 @@ node('new_node') {
         archiveArtifacts artifacts: '**/gameoflife.war'
     }
     stage('test results') {
-        junitsss testResults: '**/TEST-*.xml'
+        junit testResults: '**/TEST-*.xml'
     }
 }
