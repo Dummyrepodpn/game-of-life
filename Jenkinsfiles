@@ -5,7 +5,7 @@ node('new_node') {
             poll: false
     }
     stage('build') {
-        sh 'export PATH="/usr/lib/jvmjava-8-openjdk-amd64/BIN:$PATH"',
+        sh 'export PATH="/usr/lib/jvm/java-8-openjdk-amd64/BIN:$PATH"',
         sh 'mvn package'
     }
     stage('artifacts') {
