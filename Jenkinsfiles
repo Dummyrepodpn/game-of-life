@@ -9,9 +9,9 @@ node('new_node') {
         sh 'mvn package'
     }
     stage(artifacts) {
-        archiveArtifacts artifacts '**/gameoflife.war'
+        archiveArtifacts artifacts: '**/gameoflife.war'
     }
     stage(test results) {
-        junitsss testResults '**/TEST-*.xml'
+        junitsss testResults: '**/TEST-*.xml'
     }
 }
