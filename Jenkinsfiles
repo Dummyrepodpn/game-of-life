@@ -1,0 +1,17 @@
+node('new_node') {
+    stage(vcn) {
+        git url: 'https://github.com/Dummyrepodpn/game-of-life.git',
+            branch: 'scripted',
+            poll: false
+    }
+    stage(build) {
+        sh 'export PATH="/usr/lib/jvmjava-8-openjdk-amd64/BIN:$PATH"',
+        sh 'mvn package'
+    }
+    stage(artifacts) {
+        archiveArtifacts artifacts '**/gameoflife.war'
+    }
+    stage(test results) {
+        junitsss testResults '**/TEST-*.xml'
+    }
+}
