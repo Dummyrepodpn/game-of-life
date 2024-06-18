@@ -16,7 +16,7 @@ pipeline {
         stage('post build actions') {
             steps{
                 archiveArtifacts artifacts: '**/gameoflife.war'
-                junit testResults: '**/Test-*.xml'
+                junit testResults: '**/TEST-*.xml'
             }
         }
     }
