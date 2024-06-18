@@ -8,12 +8,12 @@ pipeline {
                     branch: 'declarative'
             }
         }
-        stages('build') {
+        stage('build') {
             steps{
                 sh 'export PATH="/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:$PATH" && mvn package'
             }
         }
-        stages('post build actions') {
+        stage('post build actions') {
             steps{
                 archiveArtifacts artifacts: '**/gameoflife.war'
                 junit testResults: '**/Test-*.xml'
