@@ -1,7 +1,7 @@
 pipeline {
     agent { label 'UBUNTU_NODE1' }
     triggers { pollSCM('* * * * *') }
-    parameters { choice( name: 'CHOICES', chioces: [ 'clean package','clean','install'] ) }
+    parameters { choice( name: 'CHOICES', choices: ['clean package','clean','install'] ) }
     stages{
         stage('vcn') {
             steps {
