@@ -1,0 +1,22 @@
+pipeline {
+    agent { label 'UBUNTU_NODE1' }
+    stages{
+        stage('vcn') {
+            steps {
+                git url: 'https://github.com/wakaleo/game-of-life.git',
+                    branch: 'declarative'
+            }
+        }
+        stages('build') {
+            steps{
+                sh 'export PATH="/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:$PATH" && mvn package'
+            }
+        }
+        stages('post build actions') {
+            steps{
+                archiveArtifacts artifacts: '**/gameoflife.war'
+                junit testResults: '**/Test-*.xml'
+            }
+        }
+    }
+}
